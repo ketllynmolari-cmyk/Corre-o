@@ -1,0 +1,40 @@
+
+#  CEEP Assaí — Programação com Python I
+#  Curso: Inteligência Artificial e Dados
+#  Professor: João Antonio Carboni Gomes
+#  Reavaliação em Dupla: corrigir o código errado
+# ============================================================
+
+print("=== SISTEMA DE CADASTRO ===\n")
+
+# --- CADASTRO ---
+nome = input("Digite seu nome completo: ")
+email = input("Digite seu e-mail: ")
+cidade = input("Digite sua cidade: ")
+
+nome_salvo = nome.strip()  # CORRIGIDO: faltava o strip() para remover espaços extras no início e no fim
+
+email_salvo = email.strip().lower()  # CORRIGIDO: estava .upper(), e-mail deve ser minúsculo. Adicionado strip() e trocado para lower()
+
+cidade_salvo = cidade.strip().upper()  # CORRIGIDO: faltava os parênteses () no .upper, sem eles salvava a função e não o texto. Adicionado strip()
+                                            
+print("\n--- Dados salvos ---")
+print("Nome:   ", nome_salvo)
+print("E-mail: ", email_salvo)
+print("Cidade: ", cidade_salvo)
+
+print("\n=== BUSCA POR E-MAIL ===\n")
+busca_email = input("Digite o e-mail cadastrado para confirmar: ")
+
+if busca_email.strip().lower() == email_salvo:  # CORRIGIDO: estava usando = (atribuição) em vez de == (comparação). Adicionado strip().lower() para comparar igual ao salvo
+    print("Usuário encontrado:", nome_salvo)
+else:
+    print("Usuário não encontrado.")
+
+print("\n=== VERIFICAÇÃO DE CIDADE ===\n")
+cidade_busca = input("Digite uma cidade para verificar se o usuário mora lá: ")
+
+if cidade_busca.strip().upper() == cidade_salvo:  # CORRIGIDO: estava comparando .upper() com .lower(), que nunca seria igual. Agora os dois estão em .upper(). Adicionado strip()
+    print(f"{nome_salvo} mora em {cidade_busca.strip().upper()}.")
+else:
+    print("O usuário não mora nessa cidade.")
